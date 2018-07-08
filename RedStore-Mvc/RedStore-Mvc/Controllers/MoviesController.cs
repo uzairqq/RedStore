@@ -17,7 +17,13 @@ namespace RedStore_Mvc.Controllers
                 Id = 1,
                 Name = "Avengers"
             };
-            return View(movie);
+            //return View(movie);
+            //return new ViewResult();
+            //return Content("this is random action method");
+            //return HttpNotFound();
+            //return new EmptyResult();
+            //return RedirectToAction("Index", "Home", new {page = 1, sortBy = "name"});
+
         }
     }
 }
