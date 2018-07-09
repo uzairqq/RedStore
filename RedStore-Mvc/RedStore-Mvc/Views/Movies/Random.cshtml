@@ -1,4 +1,4 @@
-﻿@model RedStore_Mvc.Models.Movies
+﻿@model RedStore_Mvc.ViewModels.RandomMovieViewModel
 @{
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,4 +6,4 @@
 
 <h2>Random</h2>
 
-<h2>@Model.Name</h2>
+<h2>@Model.Movies.Name</h2>
