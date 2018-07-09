@@ -20,6 +20,13 @@ namespace RedStore_Mvc.Controllers
             };
             return View(movie);
         }
+
+        public ActionResult ByReleaseDate(int year,int month)
+        {
+            return Content(year + "/" + month);
+        }
+
+
         //if action parameter is this :- int movieId then  route will be:- //movies/edit?12  error in this route like :- //movies/edit/12
         //if action paramter is this :- int id then route can be this :- //movies/edit/12   erro in this route like :-  //movies/edit?12
         public ActionResult Edit(int id)
