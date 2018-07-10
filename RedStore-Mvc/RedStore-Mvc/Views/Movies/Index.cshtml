@@ -1,0 +1,29 @@
+﻿@model IEnumerable<RedStore_Mvc.Models.Movies>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Movies</h1>
+@if (!Model.Any())
+{
+    <p>No Movies Are Available</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Movies</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var movie in  Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(movie.Name, "Details", "Movies", new {id = movie.Id}, null)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
