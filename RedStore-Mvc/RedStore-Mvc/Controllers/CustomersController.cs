@@ -7,33 +7,28 @@ namespace RedStore_Mvc.Controllers
 {
     public class CustomersController : Controller
     {
+        private readonly ApplicationDbContext _dbContext;
+
+        public CustomersController()
+        {
+            _dbContext=new ApplicationDbContext();
+        }
         // GET: Customers
         public ViewResult Index()
         {
-            var customers = GetCustomers();
+            var customers = _dbContext.Customers.ToList();
             return View(customers);
         }
         
 
         public ActionResult Details(int id)
         {
-            var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
+            var customer = _dbContext.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
                 return HttpNotFound();
 
             return View(customer);
         }
-
-
-        private IEnumerable<Customer> GetCustomers()
-        {
-            return new List<Customer>
-            {
-                new Customer { Id = 1, Name = "John Smith" },
-                new Customer { Id = 2, Name = "Mary Williams" }
-            };
-        }
-
     }
 }
