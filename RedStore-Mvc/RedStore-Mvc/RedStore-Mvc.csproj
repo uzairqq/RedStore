@@ -215,11 +215,16 @@
     <Compile Include="Migrations\201807101548133_AddedMovieEntity.Designer.cs">
       <DependentUpon>201807101548133_AddedMovieEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807101654522_AddedMembershipType.cs" />
+    <Compile Include="Migrations\201807101654522_AddedMembershipType.Designer.cs">
+      <DependentUpon>201807101654522_AddedMembershipType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -316,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807101548133_AddedMovieEntity.resx">
       <DependentUpon>201807101548133_AddedMovieEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807101654522_AddedMembershipType.resx">
+      <DependentUpon>201807101654522_AddedMembershipType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
