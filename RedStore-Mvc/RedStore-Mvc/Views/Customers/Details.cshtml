@@ -1,4 +1,4 @@
-﻿
+﻿@model RedStore_Mvc.Models.Customer
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,4 +6,8 @@
 
 <h2>Details</h2>
 
-<h2>@Model.Name</h2>
+<h2></h2>
+<ul>
+    <li>@Model.Name</li>
+    <li>@Model.BirthDate</li>
+</ul>

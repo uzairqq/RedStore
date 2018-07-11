@@ -239,9 +239,26 @@
     <Compile Include="Migrations\201807110954153_AddedRequiredinMembershipTypeNameProp.Designer.cs">
       <DependentUpon>201807110954153_AddedRequiredinMembershipTypeNameProp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807111002114_AddedBirthDateToCustomeEntiy.cs" />
+    <Compile Include="Migrations\201807111002114_AddedBirthDateToCustomeEntiy.Designer.cs">
+      <DependentUpon>201807111002114_AddedBirthDateToCustomeEntiy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807111114555_AddedNewGenreAndMoviesProps.cs" />
+    <Compile Include="Migrations\201807111114555_AddedNewGenreAndMoviesProps.Designer.cs">
+      <DependentUpon>201807111114555_AddedNewGenreAndMoviesProps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807111335169_addedGenreAndRelatedWithMovies.cs" />
+    <Compile Include="Migrations\201807111335169_addedGenreAndRelatedWithMovies.Designer.cs">
+      <DependentUpon>201807111335169_addedGenreAndRelatedWithMovies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807111352172_relationshipwithmovietogenre.cs" />
+    <Compile Include="Migrations\201807111352172_relationshipwithmovietogenre.Designer.cs">
+      <DependentUpon>201807111352172_relationshipwithmovietogenre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -359,6 +376,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807110954153_AddedRequiredinMembershipTypeNameProp.resx">
       <DependentUpon>201807110954153_AddedRequiredinMembershipTypeNameProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807111002114_AddedBirthDateToCustomeEntiy.resx">
+      <DependentUpon>201807111002114_AddedBirthDateToCustomeEntiy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807111114555_AddedNewGenreAndMoviesProps.resx">
+      <DependentUpon>201807111114555_AddedNewGenreAndMoviesProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807111335169_addedGenreAndRelatedWithMovies.resx">
+      <DependentUpon>201807111335169_addedGenreAndRelatedWithMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807111352172_relationshipwithmovietogenre.resx">
+      <DependentUpon>201807111352172_relationshipwithmovietogenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

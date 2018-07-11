@@ -14,6 +14,10 @@ namespace RedStore_Mvc.Controllers
         {
             _dbContext=new ApplicationDbContext();
         }
+        protected override void Dispose(bool disposing)
+        {
+            _dbContext.Dispose();
+        }
         // GET: Customers
         public ViewResult Index()
         {
