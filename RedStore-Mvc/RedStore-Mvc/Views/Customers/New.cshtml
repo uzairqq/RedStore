@@ -1,0 +1,24 @@
+﻿@model RedStore_Mvc.Models.Customer
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Customer</h2>
+
+@using (Html.BeginForm("Create", "Customers"))
+{
+    <div class="form-group">
+        @Html.LabelFor(i => i.Name)
+        @Html.TextBoxFor(i => i.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(i => i.BirthDate)
+        @Html.TextBoxFor(i => i.BirthDate, new { @class = "form-control" })
+    </div>
+    <div class="checkbox">
+        <label></label>
+        @Html.CheckBoxFor(i => i.IsSubscribedToNewsletter) Subscribe To News Letter?
+    </div>
+}
+

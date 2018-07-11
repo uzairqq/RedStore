@@ -18,6 +18,12 @@ namespace RedStore_Mvc.Controllers
         {
             _dbContext.Dispose();
         }
+
+        public ActionResult New()
+        {
+            return View();
+        }
+
         // GET: Customers
         public ViewResult Index()
         {

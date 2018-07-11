@@ -13,6 +13,7 @@ namespace RedStore_Mvc.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+        [Display(Name = "Date Of Birth")]
         public DateTime BirthDate { get; set; }
 
         public bool IsSubscribedToNewsletter { get; set; }
