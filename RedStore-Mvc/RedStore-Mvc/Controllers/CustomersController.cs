@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using RedStore_Mvc.Models;
@@ -16,7 +17,7 @@ namespace RedStore_Mvc.Controllers
         // GET: Customers
         public ViewResult Index()
         {
-            var customers = _dbContext.Customers.ToList();
+            var customers = _dbContext.Customers.Include(i=>i.MembershipType).ToList();
             return View(customers);
         }
         

@@ -231,6 +231,14 @@
     <Compile Include="Migrations\201807102038042_Added IsSubscribedToNewsletter.Designer.cs">
       <DependentUpon>201807102038042_Added IsSubscribedToNewsletter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807110946456_AddedNamePropToMembershipType.cs" />
+    <Compile Include="Migrations\201807110946456_AddedNamePropToMembershipType.Designer.cs">
+      <DependentUpon>201807110946456_AddedNamePropToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807110954153_AddedRequiredinMembershipTypeNameProp.cs" />
+    <Compile Include="Migrations\201807110954153_AddedRequiredinMembershipTypeNameProp.Designer.cs">
+      <DependentUpon>201807110954153_AddedRequiredinMembershipTypeNameProp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -345,6 +353,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807102038042_Added IsSubscribedToNewsletter.resx">
       <DependentUpon>201807102038042_Added IsSubscribedToNewsletter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807110946456_AddedNamePropToMembershipType.resx">
+      <DependentUpon>201807110946456_AddedNamePropToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807110954153_AddedRequiredinMembershipTypeNameProp.resx">
+      <DependentUpon>201807110954153_AddedRequiredinMembershipTypeNameProp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
