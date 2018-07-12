@@ -1,0 +1,31 @@
+﻿@model RedStore_Mvc.ViewModels.MoviesFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Movie</h2>
+
+
+
+@using (Html.BeginForm("Save", "Movies"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movies.Name)
+        @Html.TextBoxFor(i => i.Movies.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movies.ReleaseDate)
+        @Html.TextBoxFor(i => i.Movies.ReleaseDate, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movies.NumberInStock)
+        @Html.TextBoxFor(i => i.Movies.NumberInStock, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movies.GenreId)
+        @Html.DropDownListFor(i => i.Movies.GenreId, new SelectList(Model.Genreses,"Id", "Name"), "Select Genre", new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(i=>i.Movies.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+}
