@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using RedStore_Mvc.Models;
+using RedStore_Mvc.ViewModels;
 
 namespace RedStore_Mvc.Controllers
 {
@@ -21,7 +22,12 @@ namespace RedStore_Mvc.Controllers
 
         public ActionResult New()
         {
-            return View();
+            var memberShipTypes = _dbContext.MembershipTypes.ToList();
+            var viewModel = new NewCustomerViewModel()
+            {
+                MembershipTypes = memberShipTypes
+            };
+            return View(viewModel);
         }
 
         // GET: Customers

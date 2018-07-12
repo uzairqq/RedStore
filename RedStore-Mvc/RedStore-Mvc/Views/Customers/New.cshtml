@@ -1,4 +1,4 @@
-﻿@model RedStore_Mvc.Models.Customer
+﻿@model RedStore_Mvc.ViewModels.NewCustomerViewModel
 @{
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,16 +9,20 @@
 @using (Html.BeginForm("Create", "Customers"))
 {
     <div class="form-group">
-        @Html.LabelFor(i => i.Name)
-        @Html.TextBoxFor(i => i.Name, new { @class = "form-control" })
+        @Html.LabelFor(i => i.Customer.Name)
+        @Html.TextBoxFor(i => i.Customer.Name, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(i => i.BirthDate)
-        @Html.TextBoxFor(i => i.BirthDate, new { @class = "form-control" })
+        @Html.LabelFor(i => i.Customer.BirthDate)
+        @Html.TextBoxFor(i => i.Customer.BirthDate, new { @class = "form-control" })
     </div>
     <div class="checkbox">
         <label></label>
-        @Html.CheckBoxFor(i => i.IsSubscribedToNewsletter) Subscribe To News Letter?
+        @Html.CheckBoxFor(i => i.Customer.IsSubscribedToNewsletter) Subscribe To News Letter?
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(i => i.Customer.MembershipTypeId)
+        @Html.DropDownListFor(i => i.Customer.MembershipTypeId,new SelectList(Model.MembershipTypes,"Id","Name"),"Select Membership Type", new { @class = "form-control" })
     </div>
 }
 
