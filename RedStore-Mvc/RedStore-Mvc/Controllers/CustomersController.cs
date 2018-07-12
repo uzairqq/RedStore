@@ -19,6 +19,13 @@ namespace RedStore_Mvc.Controllers
         {
             _dbContext.Dispose();
         }
+        [HttpPost]
+        public ActionResult Create(Customer customer)  //we can also pass customerViewModel in parameter and also customer .. EF is smart to get the data of memebershiptype in customer because of relationship
+        {
+            _dbContext.Customers.Add(customer);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index", "Customers");
+        }
 
         public ActionResult New()
         {
