@@ -17,6 +17,8 @@
 }
 
 <h1>Customers</h1>
+@Html.ActionLink("New Movie","New","Customers",null,new {@class="btn btn-primary"})
+<br /><br />
 @if (!Model.Any())
 {
     <p>We don't have any customers yet.</p>
