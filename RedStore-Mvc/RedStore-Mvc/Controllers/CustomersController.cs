@@ -30,11 +30,11 @@ namespace RedStore_Mvc.Controllers
         public ActionResult New()
         {
             var memberShipTypes = _dbContext.MembershipTypes.ToList();
-            var viewModel = new NewCustomerViewModel()
+            var viewModel = new CustomerFormViewModel()
             {
                 MembershipTypes = memberShipTypes
             };
-            return View(viewModel);
+            return View("CustomerForm",viewModel);
         }
 
         // GET: Customers
@@ -53,6 +53,21 @@ namespace RedStore_Mvc.Controllers
                 return HttpNotFound();
 
             return View(customer);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _dbContext.Customers.SingleOrDefault(c => c.Id == id);
+            if (customer == null)
+                return HttpNotFound();
+
+            var viewModel = new CustomerFormViewModel()
+            {
+                Customer = customer,
+                MembershipTypes = _dbContext.MembershipTypes.ToList()
+            };
+
+            return View("CustomerForm", viewModel);
         }
     }
 }
