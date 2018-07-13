@@ -21,6 +21,12 @@ namespace RedStore_Mvc.Models
 
         [Display(Name = "Membership Type")]
         [Min18YearForMembership]
-        public byte MembershipTypeId { get; set; } 
+        public byte MembershipTypeId { get; set; }
+
+
+        public static readonly byte Unknown = 0;
+        public static readonly byte PayAsYouGo= 1;
+
+
     }
 }

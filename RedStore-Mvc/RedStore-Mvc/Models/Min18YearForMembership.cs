@@ -12,7 +12,7 @@ namespace RedStore_Mvc.Models
         {
             var customer = (Customer) validationContext.ObjectInstance;
 
-            if(customer.MembershipTypeId==0 || customer.MembershipTypeId==1)
+            if(customer.MembershipTypeId==Customer.Unknown || customer.MembershipTypeId==Customer.PayAsYouGo)
                 return ValidationResult.Success;
 
             if(customer.BirthDate==null)
