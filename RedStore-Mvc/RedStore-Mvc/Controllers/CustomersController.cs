@@ -22,6 +22,16 @@ namespace RedStore_Mvc.Controllers
         [HttpPost]
         public ActionResult Save(Customer customer)  //we can also pass customerViewModel in parameter and also customer .. EF is smart to get the data of memebershiptype in customer because of relationship
         {
+
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel()
+                {
+                    Customer = customer,
+                    MembershipTypes = _dbContext.MembershipTypes.ToList()
+                };
+                return View("CustomerForm", viewModel);
+            }
             if(customer.Id==0)
             _dbContext.Customers.Add(customer);
             else
