@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using RedStore_Mvc.Models;
+using RedStore_Mvc.ViewModels;
 
 namespace RedStore_Mvc.Controllers
 {
@@ -32,14 +33,22 @@ namespace RedStore_Mvc.Controllers
         [HttpPost]
         public ActionResult Save(Movies movies)    //we can also pass MovieViewModel in parameter and also customer .. EF is smart to get the data of memebershiptype in customer because of relationship
         {
-            try
-            {
-                if (movies.Id == 0)
+                if (!ModelState.IsValid)
                 {
-                    movies.DateAdded = DateTime.Now;
-                    _dbContext.Movies.Add(movies);
+                    var viewModel = new MoviesFormViewModel
+                    {
+                        Movies = movies,
+                        Genreses = _dbContext.Genres.ToList()
+                    };
+                    return View("New", viewModel);
                 }
-                else
+
+            if (movies.Id == 0)
+            {
+                movies.DateAdded=DateTime.Now;
+                _dbContext.Movies.Add(movies);
+            }
+            else
                 {
                     var movieInDb = _dbContext.Movies.Single(i => i.Id == movies.Id);
                     movieInDb.Name = movies.Name;
@@ -50,13 +59,7 @@ namespace RedStore_Mvc.Controllers
                 _dbContext.SaveChanges();
                 return RedirectToAction("Index", "Movies");
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-           
-        }
+    
 
 
         // GET: Movies

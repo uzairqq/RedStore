@@ -263,6 +263,10 @@
     <Compile Include="Migrations\201807130146562_BirthdateNullable.Designer.cs">
       <DependentUpon>201807130146562_BirthdateNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807132120011_MoviesPropertiesRequiredAttribute.cs" />
+    <Compile Include="Migrations\201807132120011_MoviesPropertiesRequiredAttribute.Designer.cs">
+      <DependentUpon>201807132120011_MoviesPropertiesRequiredAttribute.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -406,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807130146562_BirthdateNullable.resx">
       <DependentUpon>201807130146562_BirthdateNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807132120011_MoviesPropertiesRequiredAttribute.resx">
+      <DependentUpon>201807132120011_MoviesPropertiesRequiredAttribute.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
