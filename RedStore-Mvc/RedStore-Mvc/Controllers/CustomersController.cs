@@ -51,6 +51,7 @@ namespace RedStore_Mvc.Controllers
             var memberShipTypes = _dbContext.MembershipTypes.ToList();
             var viewModel = new CustomerFormViewModel()
             {
+                Customer = new Customer(), // i have included this there because customer id hidden is validation when using validation summary
                 MembershipTypes = memberShipTypes
             };
             return View("CustomerForm",viewModel);

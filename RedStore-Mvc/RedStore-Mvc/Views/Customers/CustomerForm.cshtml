@@ -8,10 +8,16 @@
 
 @using (Html.BeginForm("Save", "Customers"))
 {
+    @Html.ValidationSummary(true,"Please Fix Below Following Errors!!!")    
     <div class="form-group">
         @Html.LabelFor(i => i.Customer.Name)
         @Html.TextBoxFor(i => i.Customer.Name, new { @class = "form-control" })
         @Html.ValidationMessageFor(m=>m.Customer.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(i => i.Customer.MembershipTypeId)
+        @Html.DropDownListFor(i => i.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Customer.MembershipTypeId)
     </div>
     <div class="form-group">
         @Html.LabelFor(i => i.Customer.BirthDate)
@@ -19,11 +25,7 @@
         @Html.ValidationMessageFor(m=>m.Customer.BirthDate)
     </div>
    
-    <div class="form-group">
-        @Html.LabelFor(i => i.Customer.MembershipTypeId)
-        @Html.DropDownListFor(i => i.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m=>m.Customer.MembershipTypeId)
-        </div>
+   
     <div class="checkbox">
         <label></label>
         @Html.CheckBoxFor(i => i.Customer.IsSubscribedToNewsletter) Subscribe To News Letter?
