@@ -20,6 +20,7 @@ namespace RedStore_Mvc.Controllers
             _dbContext.Dispose();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)  //we can also pass customerViewModel in parameter and also customer .. EF is smart to get the data of memebershiptype in customer because of relationship
         {
 
