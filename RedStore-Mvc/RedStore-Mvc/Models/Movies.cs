@@ -26,6 +26,7 @@ namespace RedStore_Mvc.Models
         public int NumberInStock { get; set; }
        
         public Genres Genre { get; set; }
+        [Display(Name = "Genre")]
         public byte GenreId { get; set; }
 
     }

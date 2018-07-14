@@ -23,17 +23,19 @@ namespace RedStore_Mvc.Controllers
         public ActionResult New()
         {
             var genres = _dbContext.Genres.ToList();
-            var viewModel = new ViewModels.MoviesFormViewModel()
+            var viewModel = new MoviesFormViewModel()
             {
+                Movies = new Movies(),
                 Genreses = genres
             };
             return View("New",viewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movies movies)    //we can also pass MovieViewModel in parameter and also customer .. EF is smart to get the data of memebershiptype in customer because of relationship
         {
-                if (!ModelState.IsValid)
+                if(!ModelState.IsValid)
                 {
                     var viewModel = new MoviesFormViewModel
                     {
