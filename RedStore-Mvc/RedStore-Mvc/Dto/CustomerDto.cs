@@ -19,7 +19,7 @@ namespace RedStore_Mvc.Dto
 
         public bool IsSubscribedToNewsletter { get; set; }
 
-        [Min18YearForMembership]
+       
         public byte MembershipTypeId { get; set; }
     }
 }
