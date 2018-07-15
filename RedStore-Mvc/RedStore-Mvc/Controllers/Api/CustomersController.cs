@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using RedStore_Mvc.Dto;
 using RedStore_Mvc.Models;
 
 namespace RedStore_Mvc.Controllers.Api
@@ -17,35 +19,39 @@ namespace RedStore_Mvc.Controllers.Api
 
         }
         //   /api/customers
-        public IEnumerable<Customer> Get()
+        public IEnumerable<CustomerDto> Get()
         {
-            return _dbContext.Customers.ToList();
+            return _dbContext.Customers.ToList().Select(Mapper.Map<Customer,CustomerDto>);
         }
         
         //    /api/customers/1
-        public Customer Get(int id)
+        public CustomerDto Get(int id)
         {
             var customer = _dbContext.Customers.SingleOrDefault(c => c.Id == id);
             if(customer==null)
                 throw  new HttpResponseException(HttpStatusCode.NotFound);
-            return customer;
+             
+            return Mapper.Map<Customer,CustomerDto>(customer);
         }
         //POST /api/customers
         [HttpPost]
-        public Customer CreateCustomer(Customer customer)
+        public CustomerDto CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+            var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
             _dbContext.Customers.Add(customer);
             _dbContext.SaveChanges();
 
-            return customer;
+            customerDto.Id = customer.Id;
+
+            return customerDto;
         }
 
         //Put /api/customers
         [HttpPut]
-        public int UpdateCustomer(Customer customer, int id)
+        public int UpdateCustomer(CustomerDto customerDto, int id)
         {
             if(!ModelState.IsValid)
                 throw new   HttpResponseException(HttpStatusCode.BadGateway);
@@ -54,11 +60,8 @@ namespace RedStore_Mvc.Controllers.Api
 
             if(customerInDb==null)
                 throw  new HttpResponseException(HttpStatusCode.NotFound);
-            customerInDb.Name = customer.Name;
-            customerInDb.BirthDate = customer.BirthDate;
-            customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
-            customerInDb.MembershipTypeId = customer.MembershipTypeId;
 
+            Mapper.Map(customerDto, customerInDb);
             _dbContext.SaveChanges();
             return customerInDb.Id;
         }
