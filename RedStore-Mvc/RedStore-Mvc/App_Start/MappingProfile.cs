@@ -12,8 +12,14 @@ namespace RedStore_Mvc.App_Start
     {
         public MappingProfile()
         {
+            //Customer Mapping
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<CustomerDto, Customer>();
+
+            //Movies Mapping
+            Mapper.CreateMap<Movies, MovieDto>();
+            Mapper.CreateMap<MovieDto, Movies>();
+
         }
     }
 }
