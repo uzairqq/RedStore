@@ -25,20 +25,19 @@ namespace RedStore_Mvc.Controllers.Api
         }
         
         //    /api/customers/1
-        public CustomerDto Get(int id)
+        public IHttpActionResult Get(int id)
         {
             var customer = _dbContext.Customers.SingleOrDefault(c => c.Id == id);
-            if(customer==null)
-                throw  new HttpResponseException(HttpStatusCode.NotFound);
-             
-            return Mapper.Map<Customer,CustomerDto>(customer);
+            if (customer == null)
+                return NotFound();
+            return Ok(Mapper.Map<Customer,CustomerDto>(customer));
         }
         //POST /api/customers
         [HttpPost]
-        public CustomerDto CreateCustomer(CustomerDto customerDto)
+        public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
             _dbContext.Customers.Add(customer);
@@ -46,7 +45,7 @@ namespace RedStore_Mvc.Controllers.Api
 
             customerDto.Id = customer.Id;
 
-            return customerDto;
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
         }
 
         //Put /api/customers
