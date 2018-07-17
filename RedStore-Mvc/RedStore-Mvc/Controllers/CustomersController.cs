@@ -61,8 +61,7 @@ namespace RedStore_Mvc.Controllers
         // GET: Customers
         public ViewResult Index()
         {
-            var customers = _dbContext.Customers.Include(i=>i.MembershipType).ToList();
-            return View(customers);
+            return View();
         }
         
 
