@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -21,7 +22,10 @@ namespace RedStore_Mvc.Controllers.Api
         //   /api/customers
         public IEnumerable<CustomerDto> Get()
         {
-            return _dbContext.Customers.ToList().Select(Mapper.Map<Customer,CustomerDto>);
+            return _dbContext.Customers.
+                Include(i=>i.MembershipType).
+                ToList()
+                .Select(Mapper.Map<Customer,CustomerDto>);
         }
         
         //    /api/customers/1

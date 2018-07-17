@@ -12,12 +12,13 @@ namespace RedStore_Mvc.App_Start
     {
         public MappingProfile()
         {
-            //Customer Mapping
+            //Domain entity to Dto
             Mapper.CreateMap<Customer, CustomerDto>();
-            Mapper.CreateMap<CustomerDto, Customer>();
-
-            //Movies Mapping
             Mapper.CreateMap<Movies, MovieDto>();
+            Mapper.CreateMap<MembershipType, MembershipTypeDto>();
+
+            //Dto to Domain
+            Mapper.CreateMap<CustomerDto, Customer>();
             Mapper.CreateMap<MovieDto, Movies>();
 
         }
