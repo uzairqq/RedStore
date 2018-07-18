@@ -43,15 +43,19 @@ else
             $("#movies .js-delete").on("click",
                 function () {
                     var button = $(this);
-                    if (confirm("sure?")) {
-                        $.ajax({
-                            url: "/api/movie/" + button.attr("data-movies-id"),
-                            method: "DELETE",
-                            success: function() {
-                                button.parents("tr").remove();
+                    bootbox.confirm("Are You Sure You Want To Delete This Movie??",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/api/movie/" + button.attr("data-movies-id"),
+                                    method: "DELETE",
+                                    success: function() {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+
                             }
                         });
-                    }
                 });
         });
     </script>
