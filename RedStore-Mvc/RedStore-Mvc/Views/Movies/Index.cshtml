@@ -39,14 +39,16 @@ else
 {
     <script>
         $(document).ready(function () {
+           
             $("#movies .js-delete").on("click",
-                function() {
+                function () {
+                    var button = $(this);
                     if (confirm("sure?")) {
                         $.ajax({
-                            url: "/api/movie/" + $(this).attr("data-movies-id"),
+                            url: "/api/movie/" + button.attr("data-movies-id"),
                             method: "DELETE",
                             success: function() {
-                                console.log("success");
+                                button.parents("tr").remove();
                             }
                         });
                     }
