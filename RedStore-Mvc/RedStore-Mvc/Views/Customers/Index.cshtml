@@ -39,7 +39,7 @@
         $(document).ready(function () {
 
             //for fetching the customers table
-            $("#customers").dataTable({
+          var table=  $("#customers").dataTable({
                 ajax: {
                     url: "/api/customers",
                     dataSrc: ""
@@ -75,8 +75,7 @@
                                     url: "/api/customers/" + button.attr("data-customer-id"),
                                     method: "DELETE",
                                     success: function () {
-                                        button.parents("tr").remove();
-                                        console.log("success");
+                                         table.row(button.parents("tr")).remove().draw();
                                     }
                                 });
                             }
