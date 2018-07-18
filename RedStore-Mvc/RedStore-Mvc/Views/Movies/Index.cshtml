@@ -27,7 +27,7 @@ else
                 <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new {id = movie.Id}, null)</td>
                 <td>@movie.Genre.Name</td>
                 <td>
-                    <button class="btn-link js-delete">Delete</button>
+                    <button data-movies-id="@movie.Id" class="btn-link js-delete">Delete</button>
                 </td>
             </tr>
         }
@@ -41,7 +41,15 @@ else
         $(document).ready(function () {
             $("#movies .js-delete").on("click",
                 function() {
-                    confirm("sure?");
+                    if (confirm("sure?")) {
+                        $.ajax({
+                            url: "/api/movie/" + $(this).attr("data-movies-id"),
+                            method: "DELETE",
+                            success: function() {
+                                console.log("success");
+                            }
+                        });
+                    }
                 });
         });
     </script>
