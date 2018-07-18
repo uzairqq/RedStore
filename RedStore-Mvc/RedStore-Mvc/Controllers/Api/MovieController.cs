@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -22,7 +23,7 @@ namespace RedStore_Mvc.Controllers.Api
         //    /api/movies/
         public IEnumerable<MovieDto> Get()
         {
-            return _dbContext.Movies.ToList().Select(Mapper.Map<Movies, MovieDto>);
+            return _dbContext.Movies.Include(i=>i.Genre).ToList().Select(Mapper.Map<Movies, MovieDto>);
         }
         // api/movies/id
         public IHttpActionResult Get(int id)

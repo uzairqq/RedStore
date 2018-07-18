@@ -16,6 +16,7 @@ namespace RedStore_Mvc.App_Start
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<Movies, MovieDto>();
             Mapper.CreateMap<MembershipType, MembershipTypeDto>();
+            Mapper.CreateMap<Genres, GenreDto>();
 
             //Dto to Domain
             Mapper.CreateMap<CustomerDto, Customer>();
