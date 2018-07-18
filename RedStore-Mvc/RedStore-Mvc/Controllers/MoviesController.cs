@@ -67,8 +67,7 @@ namespace RedStore_Mvc.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            var movie = _dbContext.Movies.Include(i=>i.Genre).ToList();
-            return View(movie);
+            return View();
         }
 
         public ActionResult Details(int id)
@@ -85,7 +84,7 @@ namespace RedStore_Mvc.Controllers
             if (movieInDb == null)
                 return HttpNotFound();
 
-            var viewModel = new ViewModels.MoviesFormViewModel()
+            var viewModel = new MoviesFormViewModel()
             {
                 Movies = movieInDb,
                 Genreses = _dbContext.Genres.ToList()

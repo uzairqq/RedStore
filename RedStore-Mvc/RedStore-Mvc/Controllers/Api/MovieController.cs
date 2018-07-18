@@ -52,7 +52,7 @@ namespace RedStore_Mvc.Controllers.Api
 
         // api /api/movies/ 
         [HttpPut]
-        public int Put(MovieDto movieDto, int id)
+        public int Edit(MovieDto movieDto, int id)
         {
             if(!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadGateway);
