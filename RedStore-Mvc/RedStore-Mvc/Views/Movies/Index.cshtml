@@ -44,18 +44,18 @@ else
 
 
 
-
-            $("#movies").on("click",".js-delete",
+            //for deleting the movies using api 
+            $("#movies").on("click",".js-delete",   //to use table movies and use the button
                 function () {
                     var button = $(this);
-                    bootbox.confirm("Are You Sure You Want To Delete This Movie??",
+                    bootbox.confirm("Are You Sure You Want To Delete This Movie??",  //bootbox using
                         function(result) {
                             if (result) {
                                 $.ajax({
-                                    url: "/api/movie/" + button.attr("data-movies-id"),
-                                    method: "DELETE",
+                                    url: "/api/movie/" + button.attr("data-movies-id"), //api path and getting  movie id from respected buttons 
+                                    method: "DELETE",   
                                     success: function() {
-                                        button.parents("tr").remove();
+                                        button.parents("tr").remove();  //deleteing the tr row of table
                                     }
                                 });
 
