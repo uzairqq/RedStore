@@ -7,6 +7,7 @@ using RedStore_Mvc.ViewModels;
 
 namespace RedStore_Mvc.Controllers
 {
+    //[Authorize] // we can also use the in an full controller action methods
     public class CustomersController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
@@ -59,6 +60,7 @@ namespace RedStore_Mvc.Controllers
         }
 
         // GET: Customers
+        //[Authorize]  // we can also use this in here 
         public ViewResult Index()
         {
             return View();
