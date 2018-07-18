@@ -39,8 +39,13 @@ else
 {
     <script>
         $(document).ready(function () {
-           
-            $("#movies .js-delete").on("click",
+            $("#movies").dataTable();
+
+
+
+
+
+            $("#movies").on("click",".js-delete",
                 function () {
                     var button = $(this);
                     bootbox.confirm("Are You Sure You Want To Delete This Movie??",
