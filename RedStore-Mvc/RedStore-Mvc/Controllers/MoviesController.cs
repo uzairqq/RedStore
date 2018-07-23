@@ -20,6 +20,7 @@ namespace RedStore_Mvc.Controllers
             _dbContext.Dispose();
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult New()
         {
             var genres = _dbContext.Genres.ToList();
@@ -67,12 +68,13 @@ namespace RedStore_Mvc.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            if (User.IsInRole("canManageMovies"))
+            if (User.IsInRole(RoleName.CanManageMovies))
                 return View("Index");
             
             return View("ReadOnlyListIndex");
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Details(int id)
         {
             var movie = _dbContext.Movies.Include(i=>i.Genre).SingleOrDefault(m => m.Id == id);
@@ -81,6 +83,8 @@ namespace RedStore_Mvc.Controllers
             return View(movie);
         }
 
+
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Edit(int id)
         {
             var movieInDb = _dbContext.Movies.SingleOrDefault(i => i.Id == id);
