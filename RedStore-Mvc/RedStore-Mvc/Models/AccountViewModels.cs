@@ -73,6 +73,10 @@ namespace RedStore_Mvc.Models
         public string DrivingLicense { get; set; }
 
         [Required]
+        [Display(Name = "Phone Number")]
+        public string Phone { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -87,6 +91,7 @@ namespace RedStore_Mvc.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+      
     }
 
     public class ResetPasswordViewModel
@@ -107,6 +112,7 @@ namespace RedStore_Mvc.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+        
         public string Code { get; set; }
     }
 
