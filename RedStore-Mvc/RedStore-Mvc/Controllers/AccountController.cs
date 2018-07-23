@@ -156,12 +156,8 @@ namespace RedStore_Mvc.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //Temp Code
-                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext()); //creating a role store
-                    var roleManager=new RoleManager<IdentityRole>(roleStore); //created a role manager 
-                    await roleManager.CreateAsync(new IdentityRole("canManageMovies"));
-                    await UserManager.AddToRoleAsync(user.Id, "canManageMovies");
-
+                   
+                 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
