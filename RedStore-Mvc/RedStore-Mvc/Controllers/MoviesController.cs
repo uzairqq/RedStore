@@ -67,7 +67,10 @@ namespace RedStore_Mvc.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            return View();
+            if (User.IsInRole("canManageMovies"))
+                return View("Index");
+            
+            return View("ReadOnlyListIndex");
         }
 
         public ActionResult Details(int id)
