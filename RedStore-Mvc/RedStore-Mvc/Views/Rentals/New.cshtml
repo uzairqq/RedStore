@@ -15,13 +15,18 @@
     
     <div class="form-group">
         <label>Movie</label>
-    <div class="tt-container">
-        <input id="movie" type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input id="movie" type="text" value="" class="form-control" />
+        </div>
     </div>
-    </div>
-    <ul id="movies" class="list-group"></ul>
     
-    <button class="btn-primary">Submit</button>
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <ul id="movies" class="list-group"></ul>
+        </div>
+    </div>
+    
+    <button class="btn btn-primary">Submit</button>
 </form>
 
 @section scripts
@@ -33,11 +38,11 @@
                 movieIds:[]
             };
 
-            var movies = new Bloodhound({
+            var customers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
-                    url: '/api/movies?query%QUERY',
+                    url: '/api/customers?query%QUERY',
                     wildcard: '%QUERY'
                 }
             });
@@ -48,7 +53,7 @@
                 {
                     name: 'customers',
                     display: 'name',
-                    source: movies
+                    source: customers
                 }).on("typeahead:select",
                 function(e, customer) {
                     vm.customerId = customer.id;
@@ -74,7 +79,7 @@
                     source: movies
                 }).on("typeahead:select",
                 function(e, movie) {
-                    $("#movies").append("<li>" + movie.name + "</li>");
+                    $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
 
                     $("#movie").typeahead("val", "");
 
