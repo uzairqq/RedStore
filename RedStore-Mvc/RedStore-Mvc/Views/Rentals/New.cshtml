@@ -24,6 +24,8 @@
     <script>
         $(document).ready(function() {
 
+            var vm = {};
+
             var customers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -34,13 +36,17 @@
             });
 
             $('#customer').typeahead({
-                minLength: 3,
-                highlight:true
-            }, {
+                    minLength: 3,
+                    highlight: true
+                },
+                {
                     name: 'customers',
                     display: 'name',
                     source: customers
-            });
+                }).on("typeahead:select",
+                function(e, customer) {
+                    vm.customerId = customer.id;
+                });
 
         })
     </script>
