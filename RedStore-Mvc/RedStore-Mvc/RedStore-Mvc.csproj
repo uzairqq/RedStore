@@ -227,6 +227,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\MovieController.cs" />
+    <Compile Include="Controllers\Api\RentalController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -235,6 +236,7 @@
     <Compile Include="Dto\GenreDto.cs" />
     <Compile Include="Dto\MembershipTypeDto.cs" />
     <Compile Include="Dto\MovieDto.cs" />
+    <Compile Include="Dto\NewRentalDto.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -315,6 +317,14 @@
     <Compile Include="Migrations\201807231840263_AddedPhoneNumberinApplicationUser.Designer.cs">
       <DependentUpon>201807231840263_AddedPhoneNumberinApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807261157317_AddedRentalTable.cs" />
+    <Compile Include="Migrations\201807261157317_AddedRentalTable.Designer.cs">
+      <DependentUpon>201807261157317_AddedRentalTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807261413526_AddedNumberAvailableinMoviesMoel.cs" />
+    <Compile Include="Migrations\201807261413526_AddedNumberAvailableinMoviesMoel.Designer.cs">
+      <DependentUpon>201807261413526_AddedNumberAvailableinMoviesMoel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -324,6 +334,7 @@
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearForMembership.cs" />
     <Compile Include="Models\Movies.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -647,6 +658,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807231840263_AddedPhoneNumberinApplicationUser.resx">
       <DependentUpon>201807231840263_AddedPhoneNumberinApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807261157317_AddedRentalTable.resx">
+      <DependentUpon>201807261157317_AddedRentalTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807261413526_AddedNumberAvailableinMoviesMoel.resx">
+      <DependentUpon>201807261413526_AddedNumberAvailableinMoviesMoel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
