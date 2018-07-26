@@ -21,18 +21,12 @@ namespace RedStore_Mvc.Controllers.Api
         [HttpPost]
         public IHttpActionResult CreateNewRentals(NewRentalDto newRentalDto)
         {
-            if (newRentalDto.MovieIds.Count == 0)
-                return BadRequest("No Movies Id's have been given");
-
-            var customer = _dbContext.Customers.SingleOrDefault(i => i.Id == newRentalDto.CustomerId);
+            var customer = _dbContext.Customers.Single(i => i.Id == newRentalDto.CustomerId);
            
-            if (customer == null)
-                return BadRequest("Customer Id is Not Valid");
-
-            var movies = _dbContext.Movies.Where(i => newRentalDto.MovieIds.Contains(i.Id)).ToList();
-
-            if (movies.Count != newRentalDto.MovieIds.Count)
-                return BadRequest("One or More Movie Id's Are Invalid");
+            var movies = _dbContext.Movies.Where(i => 
+                newRentalDto.MovieIds.
+                    Contains(i.Id)).
+                    ToList();
 
             foreach (var movie in movies)
             {
@@ -40,7 +34,6 @@ namespace RedStore_Mvc.Controllers.Api
                     return BadRequest("Movie is not available");
 
                 movie.NumberAvailable--;
-
                 var rental = new Rental()
                 {
                     Customer = customer,
