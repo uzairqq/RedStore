@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Web.Http;
 using AutoMapper;
 using RedStore_Mvc.Dto;
@@ -20,12 +21,17 @@ namespace RedStore_Mvc.Controllers.Api
 
         }
         //   /api/customers
-        public IEnumerable<CustomerDto> Get()
+        public IHttpActionResult Get(string query=null)
         {
-            return _dbContext.Customers.
-                Include(i=>i.MembershipType).
+            var customersQuery = _dbContext.Customers.Include(i => i.MembershipType);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+
+            var customerDtos=customersQuery.
                 ToList()
                 .Select(Mapper.Map<Customer,CustomerDto>);
+            return Ok(customerDtos);
         }
         
         //    /api/customers/1
