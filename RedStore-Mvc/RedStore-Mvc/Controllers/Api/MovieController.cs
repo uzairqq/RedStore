@@ -21,9 +21,17 @@ namespace RedStore_Mvc.Controllers.Api
         }
 
         //    /api/movies/
-        public IEnumerable<MovieDto> Get()
+        public IEnumerable<MovieDto> Get(string query=null)
         {
-            return _dbContext.Movies.Include(i=>i.Genre).ToList().Select(Mapper.Map<Movies, MovieDto>);
+            var moviesQuery = _dbContext.Movies.Include(m => m.Genre)
+                .Where(m => m.NumberAvailable > 0);
+
+            if(!String.IsNullOrWhiteSpace(query))
+                moviesQuery = moviesQuery.Where(m => m.Name.Contains(query));
+
+            return moviesQuery.
+                ToList()
+                .Select(Mapper.Map<Movies, MovieDto>);
         }
         // api/movies/id
         public IHttpActionResult Get(int id)
