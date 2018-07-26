@@ -40,5 +40,23 @@ namespace RedStore_Mvc.Controllers.Api
             _dbContext.SaveChanges();
             return Ok();
         }
+
+        [HttpPut]
+        public IHttpActionResult Put(NewRentalDto dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpGet]
+        public NewRentalDto Get()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpDelete]
+        public int Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
