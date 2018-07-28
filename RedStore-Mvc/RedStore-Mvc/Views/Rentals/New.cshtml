@@ -95,9 +95,11 @@
                         data: vm
                     })
                     .done(function() {
-                        console.log("saved");
+                        //console.log("saved");
+                        toastr.success("Record Saved Successfully");
                     })
                     .fail(function() {
+                        toastr.fail("Something unexpected happened");
 
                     });
             });
