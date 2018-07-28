@@ -9,7 +9,7 @@
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
-            <input id="customer" type="text" value="" class="form-control" />
+            <input id="customer" required type="text" value="" class="form-control" />
         </div>
     </div>
     
@@ -31,6 +31,7 @@
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function() {
 
@@ -86,23 +87,27 @@
                     vm.movieIds.push(movie.id);
                 });
 
-            $("#newRental").submit(function(e) {
-                e.preventDefault(); //this will prevent submitting the form normally
+            $("#newRental").validate({
+                submitHandler: function() {
+                    e.preventDefault(); //this will prevent submitting the form normally
 
-                $.ajax({
-                        url: "/api/Rental",
-                        method: "POST",
-                        data: vm
-                    })
-                    .done(function() {
-                        //console.log("saved");
-                        toastr.success("Record Saved Successfully");
-                    })
-                    .fail(function() {
-                        toastr.fail("Something unexpected happened");
+                    $.ajax({
+                            url: "/api/Rental",
+                            method: "POST",
+                            data: vm
+                        })
+                        .done(function() {
+                            //console.log("saved");
+                            toastr.success("Record Saved Successfully");
+                        })
+                        .fail(function() {
+                            toastr.fail("Something unexpected happened");
 
-                    });
+                        });
+                }
             });
+
+            
 
 
         })
