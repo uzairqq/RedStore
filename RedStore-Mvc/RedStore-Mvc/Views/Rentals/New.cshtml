@@ -92,7 +92,7 @@
                     return vm.customerId && vm.customerId !== 0;
                 },"Please Select A Valid Customer");
             //simple validation for checking anything entered or not 
-            $("#newRental").validate({
+          var validator=  $("#newRental").validate({
                 submitHandler: function() {
                     e.preventDefault(); //this will prevent submitting the form normally
 
@@ -104,6 +104,13 @@
                         .done(function() {
                             //console.log("saved");
                             toastr.success("Record Saved Successfully");
+                            $("#customer").typeahead("val", ""); //for clearing customer box
+                            $("#movie").typeahead("val", ""); //for clearing movie box
+                            $("#movies").empty(); //for clearing movies list
+
+                            vm = { movieIds: [] }; //for clearing view model(vm) to movies ids empty array
+
+                            validator.resetForm(); //for reset the form in terms of oits validation
                         })
                         .fail(function() {
                             toastr.fail("Something unexpected happened");
